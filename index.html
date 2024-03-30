@@ -8,18 +8,24 @@
     body {
       font-family: sans-serif;
       margin: 20px;
-      text-align: center;  }
+      text-align: center;
+    }
     .container {
       display: flex;
-      flex-direction: column;  align-items: center;
-      justify-content: center;  }
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
     .counter {
       font-size: 20px;
-      margin-top: 10px;  }
+      margin-top: 10px;
+    }
     #background-toggle {
-      cursor: pointer;  }
+      cursor: pointer;
+    }
     body.yellow {
-      background-color: gold;  }
+      background-color: gold;
+    }
   </style>
 </head>
 <body>
@@ -34,12 +40,20 @@
     const counter = document.querySelector('.counter');
     let clicks = 0;
 
+    // Check if previously stored clicks exist in Local Storage
+    if (localStorage.getItem('clicks')) {
+      clicks = parseInt(localStorage.getItem('clicks'));
+      counter.textContent = clicks;
+    }
+
     toggle.addEventListener('change', function() {
       document.body.classList.toggle('yellow');
       if (document.body.classList.contains('yellow')) {
         clicks++;
         counter.textContent = clicks;
       }
+      // Update Local Storage with the latest clicks value
+      localStorage.setItem('clicks', clicks);
     });
   </script>
 </body>
