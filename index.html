@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lights On</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+      text-align: center;  }
+    .container {
+      display: flex;
+      flex-direction: column;  align-items: center;
+      justify-content: center;  }
+    .counter {
+      font-size: 20px;
+      margin-top: 10px;  }
+    #background-toggle {
+      cursor: pointer;  }
+    body.yellow {
+      background-color: gold;  }
+  </style>
+</head>
+<body>
+  <h1>Lights On</h1>
+  <div class="container">
+    <input type="checkbox" id="background-toggle">
+    <span class="counter">0</span>
+  </div>
+
+  <script>
+    const toggle = document.getElementById('background-toggle');
+    const counter = document.querySelector('.counter');
+    let clicks = 0;
+
+    toggle.addEventListener('change', function() {
+      document.body.classList.toggle('yellow');
+      if (document.body.classList.contains('yellow')) {
+        clicks++;
+        counter.textContent = clicks;
+      }
+    });
+  </script>
+</body>
+</html>
